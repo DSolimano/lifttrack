@@ -1,0 +1,22 @@
+Workout
+
+A workout is composed of 
+
+a list of sets
+a program descriptor
+Date/time for start and end
+notes
+
+Set
+A set is composed of rest, break (for change of exercise), or a exercise 
+  with desired and achieved number of reps along with data about them 
+
+belted vs not
+chalked
+AMRAP?
+RPE raiting
+
+Exercise
+An exercise is a name, a category
+
+
