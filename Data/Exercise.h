@@ -17,8 +17,8 @@ public:
     Exercise(const string name_, const string category_);
     Exercise(const Exercise& orig);
     virtual ~Exercise();
-    std::string name() const;
-    std::string category() const;
+    const std::string& name() const;
+    const std::string& category() const;
 private:
     std::string _name;
     std::string _category;

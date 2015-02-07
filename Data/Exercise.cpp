@@ -18,10 +18,10 @@ Exercise::Exercise(const Exercise& orig) {
 Exercise::~Exercise() {
 }
 
-string Exercise::category() const{
+const string& Exercise::category() const{
     return _category;    
 }
 
-string Exercise::name() const{
+const string& Exercise::name() const{
     return _name;
 }
