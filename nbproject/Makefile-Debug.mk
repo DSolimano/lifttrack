@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Data/Exercise.o \
+	${OBJECTDIR}/Data/WorkoutSet.o \
 	${OBJECTDIR}/main.o
 
 # Test Directory
@@ -43,7 +44,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f2
+	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
 CFLAGS=
@@ -74,6 +76,11 @@ ${OBJECTDIR}/Data/Exercise.o: Data/Exercise.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Data/Exercise.o Data/Exercise.cpp
 
+${OBJECTDIR}/Data/WorkoutSet.o: Data/WorkoutSet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Data
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Data/WorkoutSet.o Data/WorkoutSet.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -88,6 +95,10 @@ ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/ExerciseTest.o ${TESTDIR}/tests/exerci
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/WorkoutSetTest.o ${TESTDIR}/tests/workoutSetTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
+
 
 ${TESTDIR}/tests/ExerciseTest.o: tests/ExerciseTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
@@ -101,6 +112,18 @@ ${TESTDIR}/tests/exerciseTestRunner.o: tests/exerciseTestRunner.cpp
 	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/exerciseTestRunner.o tests/exerciseTestRunner.cpp
 
 
+${TESTDIR}/tests/WorkoutSetTest.o: tests/WorkoutSetTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/WorkoutSetTest.o tests/WorkoutSetTest.cpp
+
+
+${TESTDIR}/tests/workoutSetTestRunner.o: tests/workoutSetTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/workoutSetTestRunner.o tests/workoutSetTestRunner.cpp
+
+
 ${OBJECTDIR}/Data/Exercise_nomain.o: ${OBJECTDIR}/Data/Exercise.o Data/Exercise.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Data
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/Data/Exercise.o`; \
@@ -112,6 +135,19 @@ ${OBJECTDIR}/Data/Exercise_nomain.o: ${OBJECTDIR}/Data/Exercise.o Data/Exercise.
 	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Data/Exercise_nomain.o Data/Exercise.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Data/Exercise.o ${OBJECTDIR}/Data/Exercise_nomain.o;\
+	fi
+
+${OBJECTDIR}/Data/WorkoutSet_nomain.o: ${OBJECTDIR}/Data/WorkoutSet.o Data/WorkoutSet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Data
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Data/WorkoutSet.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Data/WorkoutSet_nomain.o Data/WorkoutSet.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Data/WorkoutSet.o ${OBJECTDIR}/Data/WorkoutSet_nomain.o;\
 	fi
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
@@ -132,6 +168,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f1 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

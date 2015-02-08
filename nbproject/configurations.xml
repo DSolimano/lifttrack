@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Data/Exercise.h</itemPath>
+      <itemPath>Data/WorkoutSet.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,6 +15,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Data/Exercise.cpp</itemPath>
+      <itemPath>Data/WorkoutSet.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -27,6 +29,14 @@
         <itemPath>tests/ExerciseTest.cpp</itemPath>
         <itemPath>tests/ExerciseTest.h</itemPath>
         <itemPath>tests/exerciseTestRunner.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="WorkoutSetTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/WorkoutSetTest.cpp</itemPath>
+        <itemPath>tests/WorkoutSetTest.h</itemPath>
+        <itemPath>tests/workoutSetTestRunner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -51,6 +61,10 @@
       </item>
       <item path="Data/Exercise.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Data/WorkoutSet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Data/WorkoutSet.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="OVERVIEW" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
@@ -69,6 +83,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -93,7 +108,13 @@
       </item>
       <item path="tests/ExerciseTest.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="tests/WorkoutSetTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/WorkoutSetTest.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/exerciseTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/workoutSetTestRunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -120,6 +141,10 @@
       </item>
       <item path="Data/Exercise.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Data/WorkoutSet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Data/WorkoutSet.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="OVERVIEW" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
@@ -138,6 +163,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -162,7 +188,13 @@
       </item>
       <item path="tests/ExerciseTest.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="tests/WorkoutSetTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/WorkoutSetTest.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/exerciseTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/workoutSetTestRunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
