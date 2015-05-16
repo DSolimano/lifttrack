@@ -14,10 +14,12 @@ A set is composed of rest, break (for change of exercise), or a exercise
 belted vs not
 chalked
 AMRAP?
-RPE raiting
+RPE rating
 Note
 
 Exercise
 An exercise is a name, a category
 
 
+Do we want to support arbitrary set notes?
+Do we want to support arbitrary exercises, or dynamic exercise creation?

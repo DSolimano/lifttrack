@@ -21,10 +21,11 @@ public:
     /*
      * This represents rest between sets of a workout, if we want to track that
      */
-    WorkoutSet(const int restTime_);
+    WorkoutSet(const int restTimeInSeconds_);
+    int RestTimeInSeconds();
     
     /*
-     * This separates "exercises".  We can't intuit this from a change in exercise, 
+     * This separates "exercises".  We can't impute this from a change in exercise, 
      * because we might consider a superset to be a single exercise.
      */
     static WorkoutSet& GetSeperatorSet(){
@@ -32,12 +33,14 @@ public:
         return s;
     }
     bool IsSeparator(){ return _isSeparator; }
+    
 private:
     WorkoutSet(string isSeparator){
         _isSeparator = true;
     }
     
     bool _isSeparator;
+    int _restTimeInSeconds;
     
 };
 

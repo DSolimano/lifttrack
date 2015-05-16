@@ -15,6 +15,7 @@ class WorkoutSetTest : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testGetSeperatorSet);
     CPPUNIT_TEST(testRestSetIsNotSeperatorSet);
+    CPPUNIT_TEST(testRestSetStoresTime);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -27,6 +28,7 @@ public:
 private:
     void testGetSeperatorSet();
     void testRestSetIsNotSeperatorSet();
+    void testRestSetStoresTime();
 
 };
 

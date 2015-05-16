@@ -32,3 +32,8 @@ void WorkoutSetTest::testRestSetIsNotSeperatorSet() {
     WorkoutSet result(5);
     CPPUNIT_ASSERT_EQUAL(false, result.IsSeparator());
 }
+
+void WorkoutSetTest::testRestSetStoresTime() {
+    WorkoutSet result(5);
+    CPPUNIT_ASSERT_EQUAL(5, result.RestTimeInSeconds());
+}
